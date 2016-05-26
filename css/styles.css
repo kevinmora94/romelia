@@ -1,0 +1,824 @@
+@charset "UTF-8";
+html, body {
+  height: 100%;
+}
+
+.inicio {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: #111;
+}
+
+.videoIntro {
+  position: fixed;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  -webkit-background-size: content;
+  -moz-background-size: content;
+  -o-background-size: content;
+  background-size: content;
+}
+
+.videoIntro video {
+  background-size: cover;
+  top: 0;
+  height: auto;
+  min-height: 100%;
+  min-width: 100%;
+  position: fixed;
+  right: 0;
+  width: 100%;
+  z-index: -100;
+}
+
+.info {
+  display: block;
+  position: fixed;
+  background-color: rgba(55, 55, 55, 0.7);
+  border-radius: 10px;
+  padding: 8px;
+  z-index: 2 !important;
+  width: 32%;
+  top: 100%;
+  left: 7%;
+}
+
+.info p {
+  text-align: center;
+  color: #fff;
+}
+
+.info2 {
+  display: block;
+  position: fixed;
+  background-color: rgba(55, 55, 55, 0.7);
+  border-radius: 10px;
+  padding: 8px;
+  z-index: 2 !important;
+  width: 32%;
+  top: 100%;
+  right: 7%;
+}
+
+.info2 p {
+  text-align: center;
+  color: #fff;
+}
+
+.btnIniciar {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  bottom: 8%;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 4%;
+  padding-left: 4%;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  right: 38%;
+}
+
+.btnIniciar:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 6px;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.btnIniciar:hover, .btnIniciar:focus, .btnIniciar:active {
+  color: #333;
+}
+
+.btnIniciar:hover:before, .btnIniciar:focus:before, .btnIniciar:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+/*SLIDER//////////////////////////////////////*/
+#banner {
+  display: none;
+}
+
+.mdi-image-slideshow:before {
+  content: "\e854";
+}
+
+@-webkit-keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.slider {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+
+.slider.fullscreen {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.slider.fullscreen ul.slides {
+  height: 100%;
+}
+
+.slider.fullscreen ul.indicators {
+  z-index: 3;
+  bottom: 30px;
+}
+
+.slider .slides {
+  background-color: #333;
+  margin: 0;
+  height: 400px;
+}
+
+.slider .slides li {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: inherit;
+  overflow: hidden;
+}
+
+.slider .slides li img {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.slider .slides li .caption {
+  color: #fff;
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  opacity: 0;
+}
+
+.slider .slides li .caption p {
+  color: #e0e0e0;
+}
+
+.slider .slides li.active {
+  z-index: 2;
+}
+
+.slider .indicators {
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+}
+
+.slider .indicators .indicator-item {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 12px;
+  background-color: #e0e0e0;
+  transition: background-color .3s;
+  border-radius: 50%;
+}
+
+.slider .indicators .indicator-item.active {
+  background-color: #4CAF50;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 3px;
+  background: #c2c0c2;
+  border: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background-color: #26a69a;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  margin: -5px 0 0 0;
+  transition: .3s;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+/*FIN SLIDER/////////////////////////////////*/
+#romeliaHistoria {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  top: 100%;
+}
+
+#romeliaHistoria .btnLiberacion {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  bottom: 8%;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 4%;
+  padding-left: 4%;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  right: 38%;
+}
+
+#romeliaHistoria .btnLiberacion:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 6px;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+#romeliaHistoria .btnLiberacion:hover, #romeliaHistoria .btnLiberacion:focus, #romeliaHistoria .btnLiberacion:active {
+  color: #333;
+}
+
+#romeliaHistoria .btnLiberacion:hover:before, #romeliaHistoria .btnLiberacion:focus:before, #romeliaHistoria .btnLiberacion:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+#romeliaHistoria .btnShananda {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  bottom: 50%;
+  left: 2%;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+#romeliaHistoria .btnShananda:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 50px;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+#romeliaHistoria .btnShananda:hover, #romeliaHistoria .btnShananda:focus, #romeliaHistoria .btnShananda:active {
+  color: #333;
+}
+
+#romeliaHistoria .btnShananda:hover:before, #romeliaHistoria .btnShananda:focus:before, #romeliaHistoria .btnShananda:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+#romeliaHistoria .btnHomero {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  bottom: 50%;
+  right: 2%;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+#romeliaHistoria .btnHomero:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 50px;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+#romeliaHistoria .btnHomero:hover, #romeliaHistoria .btnHomero:focus, #romeliaHistoria .btnHomero:active {
+  color: #333;
+}
+
+#romeliaHistoria .btnHomero:hover:before, #romeliaHistoria .btnHomero:focus:before, #romeliaHistoria .btnHomero:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+#shananda {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  left: -100%;
+}
+
+#shananda .btnShananda {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  bottom: 8%;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 4%;
+  padding-left: 4%;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  right: 38%;
+}
+
+#shananda .btnShananda:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 6px;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+#shananda .btnShananda:hover, #shananda .btnShananda:focus, #shananda .btnShananda:active {
+  color: #333;
+}
+
+#shananda .btnShananda:hover:before, #shananda .btnShananda:focus:before, #shananda .btnShananda:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+#shananda .volverRomeDer {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  bottom: 50%;
+  right: 2%;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+#shananda .volverRomeDer:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 50px;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+#shananda .volverRomeDer:hover, #shananda .volverRomeDer:focus, #shananda .volverRomeDer:active {
+  color: #333;
+}
+
+#shananda .volverRomeDer:hover:before, #shananda .volverRomeDer:focus:before, #shananda .volverRomeDer:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+#homero {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  right: -100%;
+}
+
+#homero .btnHomero {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  bottom: 8%;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 4%;
+  padding-left: 4%;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  right: 38%;
+}
+
+#homero .btnHomero:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 6px;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+#homero .btnHomero:hover, #homero .btnHomero:focus, #homero .btnHomero:active {
+  color: #333;
+}
+
+#homero .btnHomero:hover:before, #homero .btnHomero:focus:before, #homero .btnHomero:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+#homero .volverRomeIzq {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  bottom: 50%;
+  left: 2%;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+#homero .volverRomeIzq:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 50px;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+#homero .volverRomeIzq:hover, #homero .volverRomeIzq:focus, #homero .volverRomeIzq:active {
+  color: #333;
+}
+
+#homero .volverRomeIzq:hover:before, #homero .volverRomeIzq:focus:before, #homero .volverRomeIzq:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+#liberacion {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  bottom: -100%;
+}
+
+#liberacion .btnCreditos {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  bottom: 8%;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 4%;
+  padding-left: 4%;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  right: 42%;
+}
+
+#liberacion .btnCreditos:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 6px;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+#liberacion .btnCreditos:hover, #liberacion .btnCreditos:focus, #liberacion .btnCreditos:active {
+  color: #333;
+}
+
+#liberacion .btnCreditos:hover:before, #liberacion .btnCreditos:focus:before, #liberacion .btnCreditos:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+/*QUERYS PARA MÓVIL*/
+@media screen and (max-width: 900px) {
+  .principal {
+    display: none;
+  }
+  #banner {
+    display: block;
+  }
+}
+
+/*FIN QUERYS PARA MÓVIL*/

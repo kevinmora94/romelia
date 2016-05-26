@@ -1,0 +1,514 @@
+html, body{
+	height: 100%;
+}
+@mixin section(){
+	display: block;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+@mixin btn(){
+	display: block;
+		position: absolute;
+		z-index: 2;
+		bottom: 8%;
+		background:transparent;
+		color: #fff;
+		border: 2px solid #fff;
+		border-radius: 8px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-right: 4%;
+		padding-left: 4%;
+		display: inline-block;
+	  vertical-align: middle;
+	  -webkit-transform: translateZ(0);
+	  transform: translateZ(0);
+	  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	  -webkit-backface-visibility: hidden;
+	  backface-visibility: hidden;
+	  -moz-osx-font-smoothing: grayscale;
+	  -webkit-transition-property: color;
+	  transition-property: color;
+	  -webkit-transition-duration: 0.5s;
+	  transition-duration: 0.5s;
+}
+@mixin btnBefore($radio){
+	content: "";
+	  position: absolute;
+	  z-index: -1;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  background: #fff;
+	  border-radius: $radio;
+	  -webkit-transform: scaleY(0);
+	  transform: scaleY(0);
+	  -webkit-transform-origin: 50% 0;
+	  transform-origin: 50% 0;
+	  -webkit-transition-property: transform;
+	  transition-property: transform;
+	  -webkit-transition-duration: 0.5s;
+	  transition-duration: 0.5s;
+	  -webkit-transition-timing-function: ease-out;
+	  transition-timing-function: ease-out;
+}
+@mixin btnAll(){
+	-webkit-transform: scaleY(1);
+	  transform: scaleY(1);
+	  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+	  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+.inicio{
+	@include section();
+	background-color: #111;
+}
+.videoIntro{
+	position: fixed;
+	width: 100%;
+	height: auto;
+	z-index: 1;
+	-webkit-background-size: content;
+	-moz-background-size: content;
+	-o-background-size: content;
+	background-size: content;
+
+	video{
+		background-size: cover;
+		top:0;
+		height: auto;
+		min-height: 100%;
+		min-width: 100%;
+		position: fixed;
+		right: 0;
+		width: 100%;
+		z-index: -100;
+	}
+}
+@mixin txtInicio(){
+	text-align: center;
+	color: #fff;
+}
+.info{
+	display: block;
+	position: fixed;
+	background-color: rgba(55,55,55,0.7);
+	border-radius: 10px;
+	padding: 8px;
+	z-index: 2!important;
+	width: 32%;
+	top: 100%;
+	left: 7%;
+	p{	
+	@include txtInicio();
+	}
+}
+.info2{
+	display: block;
+	position: fixed;
+	background-color: rgba(55,55,55,0.7);
+	border-radius: 10px;
+	padding: 8px;
+	z-index: 2!important;
+	width: 32%;
+	top: 100%;
+	right: 7%;
+	p{	
+	@include txtInicio();
+	}
+}
+.btnIniciar{
+	@include btn();
+	right: 38%;
+}
+.btnIniciar:before {
+   @include btnBefore(6px);
+}
+.btnIniciar:hover, .btnIniciar:focus, .btnIniciar:active {
+  color: #333;
+}
+.btnIniciar:hover:before, .btnIniciar:focus:before, .btnIniciar:active:before {
+  @include btnAll();
+}
+/*SLIDER//////////////////////////////////////*/
+#banner {
+	display: none;
+}
+.mdi-image-slideshow:before {
+  content: "\e854";
+}
+
+@-webkit-keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.slider {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+
+.slider.fullscreen {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.slider.fullscreen ul.slides {
+  height: 100%;
+}
+
+.slider.fullscreen ul.indicators {
+  z-index: 3;
+  bottom: 30px;
+}
+
+.slider .slides {
+  background-color: #333;
+  margin: 0;
+  height: 400px;
+}
+
+.slider .slides li {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: inherit;
+  overflow: hidden;
+}
+
+.slider .slides li img {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.slider .slides li .caption {
+  color: #fff;
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  opacity: 0;
+}
+
+.slider .slides li .caption p {
+  color: #e0e0e0;
+}
+
+.slider .slides li.active {
+  z-index: 2;
+}
+
+.slider .indicators {
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+}
+
+.slider .indicators .indicator-item {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 12px;
+  background-color: #e0e0e0;
+  transition: background-color .3s;
+  border-radius: 50%;
+}
+
+.slider .indicators .indicator-item.active {
+  background-color: #4CAF50;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 3px;
+  background: #c2c0c2;
+  border: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background-color: #26a69a;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  margin: -5px 0 0 0;
+  transition: .3s;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+/*FIN SLIDER/////////////////////////////////*/
+#romeliaHistoria{
+	@include section();
+	top: 100%;
+	.btnLiberacion{
+		@include btn()
+		right: 38%;
+		
+	}
+	.btnLiberacion:before {
+	   @include btnBefore(6px);
+	}
+	.btnLiberacion:hover, .btnLiberacion:focus, .btnLiberacion:active {
+	  color: #333;
+	}
+	.btnLiberacion:hover:before, .btnLiberacion:focus:before, .btnLiberacion:active:before {
+	  @include btnAll();
+	}
+
+	.btnShananda{
+		display: block;
+		position: absolute;
+		z-index: 2;
+		bottom: 50%;
+		left: 2%;
+		background:transparent;
+		color: #fff;
+		border: 2px solid #fff;
+		border-radius: 50px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-right: 8px;
+		padding-left: 8px;
+		display: inline-block;
+	  vertical-align: middle;
+	  -webkit-transform: translateZ(0);
+	  transform: translateZ(0);
+	  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	  -webkit-backface-visibility: hidden;
+	  backface-visibility: hidden;
+	  -moz-osx-font-smoothing: grayscale;
+	  -webkit-transition-property: color;
+	  transition-property: color;
+	  -webkit-transition-duration: 0.5s;
+	  transition-duration: 0.5s;
+	}
+	.btnShananda:before {
+	   @include btnBefore(50px);
+	}
+	.btnShananda:hover, .btnShananda:focus, .btnShananda:active {
+	  color: #333;
+	}
+	.btnShananda:hover:before, .btnShananda:focus:before, .btnShananda:active:before {
+	  @include btnAll();
+	}
+
+	.btnHomero{
+		display: block;
+		position: absolute;
+		z-index: 2;
+		bottom: 50%;
+		right: 2%;
+		background:transparent;
+		color: #fff;
+		border: 2px solid #fff;
+		border-radius: 50px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-right: 8px;
+		padding-left: 8px;
+		display: inline-block;
+	  vertical-align: middle;
+	  -webkit-transform: translateZ(0);
+	  transform: translateZ(0);
+	  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	  -webkit-backface-visibility: hidden;
+	  backface-visibility: hidden;
+	  -moz-osx-font-smoothing: grayscale;
+	  -webkit-transition-property: color;
+	  transition-property: color;
+	  -webkit-transition-duration: 0.5s;
+	  transition-duration: 0.5s;
+	}
+	.btnHomero:before {
+	  @include btnBefore(50px);
+	}
+	.btnHomero:hover, .btnHomero:focus, .btnHomero:active {
+	  color: #333;
+	}
+	.btnHomero:hover:before, .btnHomero:focus:before, .btnHomero:active:before {
+	  @include btnAll();
+	}
+	
+}
+#shananda{
+	@include section();
+	left: -100%;
+	
+	.btnShananda{
+		@include btn()
+		right: 38%;
+		
+	}
+	.btnShananda:before {
+	   @include btnBefore(6px);
+	}
+	.btnShananda:hover, .btnShananda:focus, .btnShananda:active {
+	  color: #333;
+	}
+	.btnShananda:hover:before, .btnShananda:focus:before, .btnShananda:active:before {
+	  @include btnAll();
+	}
+	.volverRomeDer{
+		display: block;
+		position: absolute;
+		z-index: 2;
+		bottom: 50%;
+		right: 2%;
+		background:transparent;
+		color: #fff;
+		border: 2px solid #fff;
+		border-radius: 50px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-right: 8px;
+		padding-left: 8px;
+		display: inline-block;
+	  vertical-align: middle;
+	  -webkit-transform: translateZ(0);
+	  transform: translateZ(0);
+	  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	  -webkit-backface-visibility: hidden;
+	  backface-visibility: hidden;
+	  -moz-osx-font-smoothing: grayscale;
+	  -webkit-transition-property: color;
+	  transition-property: color;
+	  -webkit-transition-duration: 0.5s;
+	  transition-duration: 0.5s;
+	}
+	.volverRomeDer:before {
+	   @include btnBefore(50px);
+	}
+	.volverRomeDer:hover, .volverRomeDer:focus, .volverRomeDer:active {
+	  color: #333;
+	}
+	.volverRomeDer:hover:before, .volverRomeDer:focus:before, .volverRomeDer:active:before {
+	  @include btnAll();
+	}
+
+}
+#homero{
+	@include section();
+	right: -100%;
+
+	.btnHomero{
+		@include btn()
+		right: 38%;
+	}
+	.btnHomero:before {
+	   @include btnBefore(6px);
+	}
+	.btnHomero:hover, .btnHomero:focus, .btnHomero:active {
+	  color: #333;
+	}
+	.btnHomero:hover:before, .btnHomero:focus:before, .btnHomero:active:before {
+	  @include btnAll();
+	}
+
+	.volverRomeIzq{
+		display: block;
+		position: absolute;
+		z-index: 2;
+		bottom: 50%;
+		left: 2%;
+		background:transparent;
+		color: #fff;
+		border: 2px solid #fff;
+		border-radius: 50px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-right: 8px;
+		padding-left: 8px;
+		display: inline-block;
+	  vertical-align: middle;
+	  -webkit-transform: translateZ(0);
+	  transform: translateZ(0);
+	  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	  -webkit-backface-visibility: hidden;
+	  backface-visibility: hidden;
+	  -moz-osx-font-smoothing: grayscale;
+	  -webkit-transition-property: color;
+	  transition-property: color;
+	  -webkit-transition-duration: 0.5s;
+	  transition-duration: 0.5s;
+	}
+	.volverRomeIzq:before {
+	   @include btnBefore(50px);
+	}
+	.volverRomeIzq:hover, .volverRomeIzq:focus, .volverRomeIzq:active {
+	  color: #333;
+	}
+	.volverRomeIzq:hover:before, .volverRomeIzq:focus:before, .volverRomeIzq:active:before {
+	  @include btnAll();
+	}
+}
+#liberacion{
+	@include section();
+	bottom: -100%;
+
+	.btnCreditos{
+		@include btn()
+		right: 42%;
+		
+	}
+	.btnCreditos:before {
+	   @include btnBefore(6px);
+	}
+	.btnCreditos:hover, .btnCreditos:focus, .btnCreditos:active {
+	  color: #333;
+	}
+	.btnCreditos:hover:before, .btnCreditos:focus:before, .btnCreditos:active:before {
+	  @include btnAll();
+	}
+}
+
+
+
+
+/*QUERYS PARA MÓVIL*/
+	@media screen and (max-width: 900px) {
+		.principal{
+			display: none;
+		}
+		#banner{
+			display: block;
+		}
+	}
+/*FIN QUERYS PARA MÓVIL*/
