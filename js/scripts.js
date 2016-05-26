@@ -7,54 +7,95 @@ $(document).ready(function(){
 	$("#banner").css({"height":$(window).height() + "px"});
 	$('.slider').slider({full_width: true});
 	////////FIN DEL SLIDER////////////////////////////
-	$('.info,.info2').animate({
-		top: '0%',
-	},14000);
+	// Se agrega la clase para las animaciones
+	$("#romeliaHistoria, #shananda, #homero, #liberacion").addClass("animated");
+	// $('.info,.info2').animate({
+	// 	top: '0%',
+	// },14000);
 
+	// Mostrar historia de Romelia///////////////////
 	$('.btnIniciar').click(function(){
-		$('#romeliaHistoria').animate({
+		$('#romeliaHistoria').css({
 			top: '0%'
-		},2000);
-	});
+		});
+		// animacion
+		$('#romeliaHistoria').addClass("fadeInUp");
+		$(".inicio").addClass("fadeOutUp");
+	}); 
+
+	// Mostrar historia de Shananda////////////////////
 	$('.btnShananda').click(function(){
-		$('#romeliaHistoria').animate({
-			left: '100%'
-		},2400);
-		$('#shananda').animate({
-			left: '0%'
-		},2000);
+		$('#shananda').removeClass("fadeOutLeft");
+		// $('#romeliaHistoria').removeClass("fadeInRight");
+		// $('#romeliaHistoria').css({
+		// 	left: '100%'
+		// });
+		$('#shananda').css({
+			left: '0%',
+			"z-index": '0'
+		});
+		// animacion
+		$('#shananda').addClass("fadeInLeft")
 	});
+
+	// Volver a la historia de Romelia////////////////
 	$('.volverRomeDer').click(function(){
-		$('#romeliaHistoria').animate({
-			left: '0%'
-		},2000);
-		$('#shananda').animate({
-			left: '-100%'
-		},2400);
+		// se eliminan las animaciones
+		$('#shananda').removeClass("fadeInLeft");
+		// $('#romeliaHistoria').removeClass("fadeInUp");
+		// se posiciona el contenedor
+		// $('#romeliaHistoria').css({
+		// 	left: '0%'
+		// });
+		// $('#shananda').css({
+		// 	"z-index": '-100',
+		// });
+		// animacion
+		// $('#romeliaHistoria').addClass("fadeInRight");
+		$('#shananda').addClass("fadeOutLeft");
 	});
+
+	// Mostrar historia de Homero
 	$('.btnHomero').click(function(){
-		$('#romeliaHistoria').animate({
-			right: '100%'
-		},2400);
-		$('#homero').animate({
+		// $('#romeliaHistoria').css({
+		// se eliminan las animaciones	
+		$('#homero').removeClass("fadeOutRight");
+		// 	right: '100%'
+		// });
+		$('#homero').css({
 			right: '0%'
-		},2000);
+		});
+		// animacion
+		$('#homero').addClass("fadeInRight");
+
 	});
+
+	// Volver a historia de Romelia
 	$('.volverRomeIzq').click(function(){
-		$('#romeliaHistoria').animate({
-			right: '0%'
-		},2000);
-		$('#homero').animate({
-			right: '-100%'
-		},2400);
+		// se eliminan las animaciones
+		$('#homero').removeClass("fadeInRight");
+		// se posicionan los contenedores
+		// $('#romeliaHistoria').css({
+		// 	right: '0%'
+		// });
+		// $('#homero').css({
+		// 	right: '-100%'
+		// });
+		// animacion
+		$('#homero').addClass("fadeOutRight");
+
 	});
+
+	// Liveracion de Romelia
 	$('.btnLiberacion').click(function(){
-		$('#romeliaHistoria').animate({
-			top: '-100%'
-		},2400);
-		$('#liberacion').animate({
+		// $('#romeliaHistoria').css({
+		// 	top: '-100%'
+		// });
+		$('#liberacion').css({
 			bottom: '0%'
-		},2000);
+		});
+		$('#liberacion').addClass("fadeInUp");
+
 	});
 
 	var movil = $(window).width();
