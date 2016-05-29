@@ -196,7 +196,6 @@ html, body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
   width: 100%;
   height: inherit;
   overflow: hidden;
@@ -275,6 +274,128 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 /*FIN SLIDER/////////////////////////////////*/
+/*////////////////////////////MENÚ////////////////////////////////*/
+.menu {
+  display: block;
+  height: 54px;
+  background-color: rgba(0, 25, 89, 0.7) !important;
+  -moz-box-shadow: 0.7px 3.4px 6.4px #1a1a1a !important;
+  -webkit-box-shadow: 0.7px 3.4px 6.4px #1a1a1a !important;
+  box-shadow: 0.7px 3.4px 6.4px #1a1a1a !important;
+}
+
+@media (min-width: 768px) {
+  .menuSimple {
+    padding: 6px;
+    border-bottom: 0;
+    letter-spacing: 1px;
+  }
+  .menuSimple.top-nav-collapse {
+    padding: 0;
+    background-color: #001959 !important;
+  }
+  .menu_bar {
+    padding: 6px;
+    border-bottom: 0;
+    letter-spacing: 1px;
+    background: 0 0;
+  }
+  .menu_bar.top-nav-collapse {
+    padding: 0;
+    background-color: #001959 !important;
+    -moz-box-shadow: 0.7px 3.4px 6.4px #1a1a1a !important;
+    -webkit-box-shadow: 0.7px 3.4px 6.4px #1a1a1a !important;
+    box-shadow: 0.7px 3.4px 6.4px #1a1a1a !important;
+  }
+  .bt-menu {
+    padding: 6px;
+    border-bottom: 0;
+    letter-spacing: 1px;
+    background: 0 0;
+  }
+  .bt-menu.top-nav-collapse {
+    padding: 0;
+    background-color: #001959 !important;
+  }
+}
+
+.menu_bar {
+  display: none;
+}
+
+.menuFijo ul {
+  overflow: hidden;
+  list-style: none;
+}
+
+.menuFijo ul li {
+  float: right;
+  margin-right: 50px;
+  display: inline-block;
+}
+
+.menuFijo ul li:hover {
+  border-radius: 6px;
+  background: -webkit-linear-gradient(rgba(230, 230, 230, 0.8), rgba(0, 25, 89, 0));
+  background: -o-linear-gradient(rgba(230, 230, 230, 0.8), rgba(0, 25, 89, 0));
+  background: linear-gradient(rgba(230, 230, 230, 0.8), rgba(0, 25, 89, 0));
+}
+
+.menuFijo ul li a {
+  color: #f5f5f5;
+  padding: 10px;
+  display: block;
+  text-decoration: none !important;
+  letter-spacing: 0.7pt;
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+@media screen and (max-width: 979px) {
+  .menu {
+    background-color: #001959 !important;
+  }
+  .menuFijo {
+    width: 80%;
+    height: auto;
+    left: -100%;
+    margin: 0;
+    position: fixed !important;
+  }
+  .menuFijo ul li {
+    display: block;
+    float: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .menu_bar {
+    display: block;
+    width: 100%;
+    height: 54px;
+    background-color: #001959;
+    z-index: 6;
+  }
+  .menu_bar .bt-menu {
+    display: block;
+    padding: 5px;
+    background: #001959 !important;
+    color: #999999;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .menu_bar span {
+    float: right;
+    color: #f5f5f5;
+    font-size: 25px;
+    margin-right: 3%;
+    margin-top: 4px;
+  }
+}
+
+/*/////////////////////////FIN DEL MENÚ///////////////////////////*/
 #romeliaHistoria {
   display: block;
   position: fixed;
@@ -376,6 +497,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   transition-duration: 0.5s;
 }
 
+#romeliaHistoria .btnShananda span {
+  font-size: 25px;
+}
+
 #romeliaHistoria .btnShananda:before {
   content: "";
   position: absolute;
@@ -435,6 +560,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   transition-property: color;
   -webkit-transition-duration: 0.5s;
   transition-duration: 0.5s;
+}
+
+#romeliaHistoria .btnHomero span {
+  font-size: 25px;
 }
 
 #romeliaHistoria .btnHomero:before {
@@ -571,6 +700,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   transition-duration: 0.5s;
 }
 
+#shananda .volverRomeDer span {
+  font-size: 25px;
+}
+
 #shananda .volverRomeDer:before {
   content: "";
   position: absolute;
@@ -703,6 +836,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   transition-property: color;
   -webkit-transition-duration: 0.5s;
   transition-duration: 0.5s;
+}
+
+#homero .volverRomeIzq span {
+  font-size: 25px;
 }
 
 #homero .volverRomeIzq:before {
